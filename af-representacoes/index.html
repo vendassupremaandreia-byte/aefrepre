@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&F Representações</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bege:#f8f6f2;
+--verde:#1f4f46;
+--verde-claro:#3e7c70;
+--texto:#2b2b2b;
+}
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:var(--bege);
+color:var(--texto);
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 50px;
+background:white;
+box-shadow:0 4px 20px rgba(0,0,0,0.05);
+z-index:1000;
+display:flex;
+align-items:center;
+}
+
+header img{
+height:55px;
+}
+
+section{
+padding:120px 20px;
+max-width:1100px;
+margin:auto;
+text-align:center;
+}
+
+h1,h2{
+font-family:'Playfair Display',serif;
+color:var(--verde);
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.hero h1{
+font-size:2.8rem;
+max-width:800px;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 30px;
+background:var(--verde);
+color:white;
+border-radius:40px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+.btn:hover{
+background:var(--verde-claro);
+transform:translateY(-3px);
+}
+
+.marcas{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:40px;
+margin-top:60px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+cursor:pointer;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.card img{
+max-width:150px;
+}
+
+.marca-detalhe{
+display:none;
+background:white;
+padding:70px 30px;
+margin-top:60px;
+border-radius:25px;
+box-shadow:0 20px 60px rgba(0,0,0,0.1);
+text-align:left;
+}
+
+.btn-voltar{
+background:none;
+border:none;
+color:var(--verde);
+font-weight:600;
+cursor:pointer;
+margin-bottom:20px;
+font-size:16px;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.galeria img{
+width:100%;
+border-radius:15px;
+}
+
+.contato{
+background:white;
+padding:80px 20px;
+border-radius:25px;
+box-shadow:0 20px 60px rgba(0,0,0,0.08);
+margin-top:100px;
+}
+
+.botoes-contato{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:40px;
+}
+
+.btn-contato{
+background:var(--verde);
+color:white;
+padding:16px 28px;
+border-radius:40px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+.btn-contato:hover{
+background:var(--verde-claro);
+transform:translateY(-3px);
+}
+
+footer{
+margin-top:80px;
+padding:40px;
+background:var(--verde);
+color:white;
+text-align:center;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:2rem;}
+header{padding:15px 20px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="imagens/logo.png" alt="Logo A&F">
+</header>
+
+<section class="hero">
+<h1>Conectando você às melhores soluções em componentes e materiais para calçados e acessórios</h1>
+<a class="btn" href="#marcas">Conheça nossas soluções</a>
+</section>
+
+<section>
+<h2>Sobre nós</h2>
+<p>Somos a A&F Representações, uma empresa que atua há mais de 11 anos no mercado, conectando nossos clientes às melhores soluções em componentes e materiais para calçados e acessórios.</p>
+<p>Nosso propósito vai além de representar marcas: buscamos construir relações de confiança, oferecendo atendimento próximo, transparente e respeitoso, sempre com foco na satisfação e no crescimento dos nossos parceiros.</p>
+<p>Acreditamos que cada projeto tem potencial para se destacar, e estamos aqui para ajudar você a encontrar as melhores possibilidades para sua coleção.</p>
+</section>
+
+<section id="marcas">
+<h2>Marcas que representamos:</h2>
+
+<div class="marcas">
+<div class="card" onclick="abrirMarca('injeplan')"><img src="imagens/marcas/injeplan.png"></div>
+<div class="card" onclick="abrirMarca('maflan')"><img src="imagens/marcas/maflan.png"></div>
+<div class="card" onclick="abrirMarca('soares')"><img src="imagens/marcas/soares.png"></div>
+<div class="card" onclick="abrirMarca('rr')"><img src="imagens/marcas/rr.png"></div>
+<div class="card" onclick="abrirMarca('suprema')"><img src="imagens/marcas/suprema.png"></div>
+</div>
+</section>
+
+<section id="marca-detalhe" class="marca-detalhe">
+<button class="btn-voltar" onclick="fecharMarca()">← Voltar</button>
+<h2 id="marca-titulo"></h2>
+<p id="marca-descricao"></p>
+<div class="galeria" id="marca-galeria"></div>
+</section>
+
+<section class="contato">
+<h2>Vamos conversar?</h2>
+<p>Será um prazer apresentar nossos catálogos e entender suas necessidades.</p>
+
+<div class="botoes-contato">
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=aefrepre@gmail.com&su=Solicita%C3%A7%C3%A3o%20de%20Cat%C3%A1logo&body=Ol%C3%A1,%0A%0AGostaria%20de%20receber%20o%20cat%C3%A1logo%20virtual%20da%20marca:%20%0A%0ASegue%20meu%20contato:%20" target="_blank" class="btn-contato">E-mail</a>
+<a href="https://instagram.com/aef.repre" target="_blank" class="btn-contato">Instagram</a>
+<a href="https://wa.me/5551996786663" target="_blank" class="btn-contato">WhatsApp</a>
+</div>
+</section>
+
+<footer>
+© 2026 A&F Representações
+</footer>
+
+<script>
+function abrirMarca(marca){
+
+const detalhe = document.getElementById("marca-detalhe");
+const titulo = document.getElementById("marca-titulo");
+const descricao = document.getElementById("marca-descricao");
+const galeria = document.getElementById("marca-galeria");
+
+galeria.innerHTML = "";
+
+const dados = {
+injeplan:{
+titulo:"Injeplan",
+descricao:"A Injeplan atua no desenvolvimento e na produção de componentes injetados, oferecendo soluções com tecnologia, precisão e qualidade para o setor.",
+imagens:["imagens/produtos/injeplan1.png"]
+},
+maflan:{
+titulo:"Maflan Bordados",
+descricao:"A Maflan é especializada em bordados e aplicações, proporcionando acabamento diferenciado e alto valor estético para produtos.",
+imagens:["imagens/produtos/maflan1.png"]
+},
+soares:{
+titulo:"Soares Materiais",
+descricao:"A Soares oferece uma ampla variedade de materiais para o setor calçadista e de acessórios, com foco em qualidade, inovação e confiabilidade. Entre as opções estão Napa, Verniz, Metalizado, Cortiças, entre outros.",
+imagens:["imagens/produtos/soares1.png"]
+},
+rr:{
+titulo:"RR Componentes",
+descricao:"A RR Componentes desenvolve componentes e acessórios que unem design, funcionalidade e tendências, atendendo às necessidades do mercado calçadista e de moda.",
+imagens:["imagens/produtos/rr1.png"]
+},
+suprema:{
+titulo:"Studio Suprema",
+descricao:"A Suprema trabalha com tecnologia têxtil knit, trazendo inovação, leveza e versatilidade para aplicações em moda e calçados.",
+imagens:["imagens/produtos/suprema1.png"]
+}
+};
+
+titulo.innerText = dados[marca].titulo;
+descricao.innerText = dados[marca].descricao;
+
+dados[marca].imagens.forEach(img=>{
+const imagem = document.createElement("img");
+imagem.src = img;
+galeria.appendChild(imagem);
+});
+
+detalhe.style.display = "block";
+detalhe.scrollIntoView({behavior:"smooth"});
+}
+
+function fecharMarca(){
+document.getElementById("marca-detalhe").style.display = "none";
+}
+</script>
+
+</body>
+</html>
